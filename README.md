@@ -1,66 +1,53 @@
-Documentation for the Springboot API:
 
-## User Registration
+# Spring Boot Project - UserAPI
 
-To register a new user, make a `POST` request to the `/users` endpoint with a JSON payload that includes the following fields:
+## Introduction
 
--   `name`: a string that represents the user's name
--   `birthdate`: a date in the format `yyyy-mm-dd` that represents the user's birthdate
--   `country`: a string that represents the user's country of residence
--   `phoneNumber`: an optional string that represents the user's phone number
--   `gender`: an optional string that represents the user's gender
+This project is a Spring Boot application with Java 17, designed to provide a RESTful API.
 
-Example request:
+## Build and Start the Project
 
-`POST /users
-{
-"name": "John",
-"birthdate": "2000-01-01",
-"country": "France",
-"phoneNumber": "555-555-5555",
-"gender": "male"
-}`
+### Prerequisites
 
-Successful requests will return a `201 Created` status and a JSON representation of the created user:
+-   Java 17
+-   Maven 3.6.0 or later
 
-`{
-"id": 1,
-"name": "John",
-"birthdate": "2000-01-01",
-"country": "France",
-"phoneNumber": "555-555-5555",
-"gender": "male"
-}`
+### Build
 
-Invalid requests will return a `400 Bad Request` status and a message describing the error:
+1.  Clone the project from the repository.
 
-`{
-"message": "Invalid user: Must be a French resident"
-}`
+bashCopy code
 
-## User Retrieval
+`git clone https://github.com/[username]/[project].git`
 
-To retrieve the details of a registered user, make a `GET` request to the `/users/{id}` endpoint, where `{id}` is the ID of the user to retrieve.
+2.  Navigate to the project directory.
 
-Example request:
+bashCopy code
 
-`GET /users/1`
+`cd [project]`
 
-Successful requests will return a `200 OK` status and a JSON representation of the user:
+3.  Use Maven to build the project.
 
-`{
-"id": 1,
-"name": "John",
-"birthdate": "2000-01-01",
-"country": "France",
-"phoneNumber": "555-555-5555",
-"gender": "male"
-}`
+Copy code
 
-Invalid requests will return a `404 Not Found` status and a message describing the error:
+`mvn clean install`
 
-`{
-"message": "User not found"
-}`
+### Start the Project
 
-Please note, API will only allow adult French residents to create an account and will validate the input and return proper error messages/http statuses.
+1.  Navigate to the target directory.
+
+bashCopy code
+
+`cd target`
+
+2.  Start the application using the following command:
+
+cssCopy code
+
+`java -jar [project].jar`
+
+The application will start on `http://localhost:8080/`.
+
+## API Documentation
+
+To access the API documentation, go to `http://localhost:8080/swagger-ui.html` when the application is running. This will provide you with the available endpoints, their parameters, and expected responses.

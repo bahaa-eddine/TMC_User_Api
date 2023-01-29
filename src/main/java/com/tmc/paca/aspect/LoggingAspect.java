@@ -7,18 +7,21 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
+import java.util.Arrays;
+
 @Aspect
 @Component
 public class LoggingAspect {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(LoggingAspect.class);
 
-    @Around("execution(* com.tmc.paca.user.*.*(..))")
-    public Object logMethod(ProceedingJoinPoint joinPoint) throws Throwable {
+    @Around("execution(* com.tmc.paca..*(..))")
+    public Object logMethodCall(ProceedingJoinPoint joinPoint) throws Throwable {
         long start = System.currentTimeMillis();
         Object result = joinPoint.proceed();
-        long duration = System.currentTimeMillis() - start;
-        LOGGER.info("Method: {}  Inputs: {}  Output: {} Processing time: {} ms",joinPoint.getSignature(),joinPoint.getArgs(),result,duration);
+        long elapsedTime = System.currentTimeMillis() - start;
+        LOGGER.info("Method {} called with args {} returned {} in {} ms", joinPoint.getSignature().toShortString(),
+                Arrays.toString(joinPoint.getArgs()), result, elapsedTime);
         return result;
     }
 }
