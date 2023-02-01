@@ -31,7 +31,7 @@ public class UserService {
         return userRepository.save(user);
     }
 
-    public User getUser(Long id) {
+    public User getUser(Long id) throws NotFoundException {
         User user = userRepository.findById(id).orElse(null);
         if (user == null) {
             throw new NotFoundException(String.format("User not exist with this id : %d", id));
