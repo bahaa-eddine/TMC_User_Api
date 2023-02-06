@@ -52,6 +52,9 @@ The application will start on `http://localhost:8080/`.
 
 To access the API documentation, go to `http://localhost:8080/swagger-ui/index.html` when the application is running. This will provide you with the available endpoints, their parameters, and expected responses.
 
+pour utiliser postman
+vous trouverez le fichier des urls dans : `postman\ApiUserTMC.postman_collection.json`
+
 ## new vision
 - add Liquibase
 - auto build and deploy with Jenkins and Heroku
