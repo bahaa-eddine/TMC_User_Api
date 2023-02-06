@@ -8,4 +8,4 @@ WORKDIR /app
 COPY target/*.jar app.jar
 
 # Run the Spring Boot application
-ENTRYPOINT ["java","-jar", "app.jar", "--spring.profiles.active=${PROFILE}"]
+ENTRYPOINT ["java", "-Dspring.profiles.active=${PROFILE}","-jar", "app.jar"]

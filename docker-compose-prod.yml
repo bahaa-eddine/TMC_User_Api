@@ -1,0 +1,30 @@
+version: '3'
+services:
+  tmc-db:
+    container_name: tmc-db
+    image: mysql:8.0
+    networks:
+      - tmc-network
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: tmc-db
+      MYSQL_PASSWORD: root
+    ports:
+      - "3306:3306"
+
+  user-api-prod:
+    build: .
+    ports:
+      - 9090:9090
+    environment:
+      - "PROFILE=prod"
+      - "SPRING_PROFILES_ACTIVE=prod"
+      
+    networks:
+      - tmc-network
+    depends_on:
+      - tmc-db
+
+networks:
+  tmc-network:
+    name: tmc-network
