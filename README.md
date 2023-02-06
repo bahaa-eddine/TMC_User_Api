@@ -55,7 +55,7 @@ To access the API documentation, go to `http://localhost:8080/swagger-ui/index.h
 pour utiliser postman
 vous trouverez le fichier des urls dans : `postman\ApiUserTMC.postman_collection.json`
 
-## new vision
+## Future directions
 - add Liquibase
 - auto build and deploy with Jenkins and Heroku
 - Security ...
